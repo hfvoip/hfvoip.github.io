@@ -325,18 +325,7 @@ jQuery(document).ready(function($) {
 		 
 		
 	});
-	
-	$(".btn-importfile").click(function() {
-	   alert('导入参数，写到1..6个配置中');
-	   import_stage = 0;
-	   process_import();
-	   
-	   
-	  
-		return '';
-		
-	});
-	 
+
 	 
 	$('#memory_list').change( function() {
 		 
@@ -412,7 +401,7 @@ jQuery(document).ready(function($) {
 					log('Argh! ' + error);
 					ChromeSamples.setStatus('出错了');
 			}
-			//防止 a的事件继续冒泡
+		 
 			return false;
 
 		
@@ -503,56 +492,7 @@ jQuery(document).ready(function($) {
 		return false;
 	
 	} );
-	$('button.btn-volumefit').click(function(){
-		var gain = $(this).data('gain');
-		gain = parseInt(gain);
-		var b36 = $('#param_wdrc_b36').val();
-		var b37 = $('#param_wdrc_b37').val();
-		var b38 = $('#param_wdrc_b38').val();
-		var b39 = $('#param_wdrc_b39').val();
-		var b40 = $('#param_wdrc_b40').val();
-		var b41 = $('#param_wdrc_b41').val();
-		var b42 = $('#param_wdrc_b42').val();
-		var b43 = $('#param_wdrc_b43').val();	
-
-		b36 = parseInt(b36);
-		b37 = parseInt(b37);
-		b38 = parseInt(b38);
-		b39 = parseInt(b39);
-		b40 = parseInt(b40);
-		b41 = parseInt(b41);
-		b42 = parseInt(b42);
-		b43 = parseInt(b43);		
-		
-		b36 = gain +b36;
-		if ((b36 <0) || (b36 >80))  return false;
-		b37 = gain +b37;
-		if ((b37 <0) || (b37 >80))  return false;
-		b38 = gain +b38;
-		if ((b38 <0) || (b38 >80))  return false;
-		b39 = gain +b39;
-		if ((b39 <0) || (b39 >80)) return false;
-		b40 = gain +b40;
-		if ((b40 <0) || (b40 >80))  return false;
-		b41 = gain +b41;
-		if ((b41 <0) || (b41 >80))  return false;
-		b42 = gain +b42;
-		if ((b42 <0) || (b42 >80))  return false;
-		b43 = gain +b43;
-		if ((b43 <0) || (b43 >80))  return false;		
-		$('#param_wdrc_b36').val(b36);
-		$('#param_wdrc_b37').val(b37);
-		$('#param_wdrc_b38').val(b38);
-		$('#param_wdrc_b39').val(b39);
-		$('#param_wdrc_b40').val(b40);
-		 $('#param_wdrc_b41').val(b41);
-		 $('#param_wdrc_b42').val(b42);
-		 $('#param_wdrc_b43').val(b43);
-		alert('please click save mode config to write to hearing aid');
-		//防止 a的事件继续冒泡
-		return false;
-	
-	} );
+	 
 	
 		$('button.btn-fotamode').click( function() {
 		 
@@ -582,58 +522,6 @@ jQuery(document).ready(function($) {
 			return false;
 
 		
-	});
-	$('button.btn-paramkey').click(function() {
-		var op = $(this).data('op');
-		op = parseInt(op); 
-		var arr_send = new Uint8Array(11);
-		arr_send[0] = 0xAA;
-		if (op ==0)
-			arr_send[1] =0xCF;
-		else
-			arr_send[1] = 0xCE;
-		
-		arr_send[2]  =8;
-		for (var index=0;index<8;index++) {
-			arr_send[3+index] = ' ';
-		}
-		if (op==0) {
-			
-			//最多8个字节
-			var tmp_input = $('#param_setkey').val();
-			var len_input =tmp_input.length;
-			for (var index=0;index <len_input;index++) {
-				 arr_send[3+index] = tmp_input.charCodeAt(index);
-			}
-			
-			
-		}
-		if (op==1) {
-			//最多8个字节
-			var tmp_input = $('#param_sendkey').val();
-			var len_input =tmp_input.length;
-			for (var index=0;index <len_input;index++) {
-				 arr_send[3+index] = tmp_input.charCodeAt(index);
-			}
-			
-			
-		}
-		   
-		  let resetEnergyExpended = arr_send;
-		  
-		   try { 
-				log('> 发送 '+arr_send.join(' '));
-				eq_characteristic.writeValue(resetEnergyExpended); 
-				
-				ChromeSamples.setStatus('>发送给助听器BLE'); 
-				
-			}catch(error) {
-					log('Argh! ' + error);
-					ChromeSamples.setStatus('出错了');
-			}
-		
-		
-		return false;
 	});
 	 
 	
