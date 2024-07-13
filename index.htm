@@ -593,25 +593,6 @@
 <p>here are some reference parameters for our sample hearing aids,download <a href="http://www.jhearing.com/web2/docs/J10_Fittings_SampleHA.pdf">J10_Fittings_SampleHA.pdf</a></p>
 </div> 
 
- <div role="tabpanel" class="tab-pane  disabled " id="div_authentication"> 
-  <p> (Added on 2024-04-22<br/>
-  Do you want to protected your WDRC parameters , you can set parameter key (8 ascii digits) <br/>
-  after you set, and reboot the hearing aid , the ble client must send correct parameter key first after ble connected ,otherwise he can not read or write EQ/WDRC parameters </p>
-  <table class="table table-striped">
-  <tbody>
-    <tr><td width="20%">Set Parameter Key </td><td><input id=param_setkey maxlength=8  class="paraminfo" type="text" name="set_authentication" value="0"></input> <button   class="btn btn-primary btn-paramkey" data-op=0 >Set Key</button> </td><td width="20%">8 digits </td></tr>
-	 
-	<tr><td width="20%">Send Parameter Key </td><td><input id=param_sendkey maxlength=8  class="paraminfo" type="text" name="send_authentication" value="0"></input>  <button   class="btn btn-primary btn-paramkey" data-op=1 >Send Key</button></td><td width="20%">8 digits</td></tr>
-	 
-  
-  
-  </tbody>
-  
-  
-  
-  </table>
- 
- </div>
 
  <div role="tabpanel" class="tab-pane  disabled " id="div_puretone"> 
  
@@ -665,8 +646,9 @@
   </table>
    
    
-  <h3>How to develop android/ios app ,or WEB application </h3>
-  
+  <h3>Python offline version of this web application </h3>
+  <p>if you want to develop your own offline version ,and batch update parameters , you can check this sample code:
+  https://en.jhearing.com/docs/j10-document/ble-protocol/python-code-to-read-write-j10-via-ble/
   </div>
   
  <div role="tabpanel" class="tab-pane  disabled " id="div_fota">
